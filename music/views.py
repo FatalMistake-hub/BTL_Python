@@ -10,9 +10,9 @@ AUDIO_FILE_TYPES = ['wav', 'mp3', 'ogg']
 IMAGE_FILE_TYPES = ['png', 'jpg', 'jpeg']
 
 def index(request):
-    # if not request.user.is_authenticated():
-    #     return render(request, 'music/login.html')
-    # else:
+    if not request.user.is_authenticated:
+        return render(request, 'music/login.html')
+    else:
         albums = Album.objects.filter(user=request.user)
         song_results = Song.objects.all()
         query = request.GET.get("q")
@@ -26,27 +26,48 @@ def index(request):
             ).distinct()
             return render(request, 'music/index.html', {
                 'albums': albums,
-                'songs': song_results,
+                # 'songs': song_results,
             })
         else:
             return render(request, 'music/index.html', {'albums': albums})
 
+def index1(request):
+    if not request.user.is_authenticated:
+        return render(request, 'music/login.html')
+    else:
+        albums = Album.objects.filter(user=request.user)
+        song_results = Song.objects.all()
+        query = request.GET.get("q")
+        if query:
+            albums = albums.filter(
+                Q(album_title__icontains=query) |
+                Q(artist__icontains=query)
+            ).distinct()
+            song_results = song_results.filter(
+                Q(song_title__icontains=query)
+            ).distinct()
+            return render(request, 'music/songs.html', {
+                # 'albums': albums,
+                'song_list': song_results,
+            })
+        else:
+            return render(request, 'music/songs.html', {'song_list': song_results})
 
 
 
 def detail(request, album_id):
 
-    # if not request.user.is_authenticated():
-    #     return render(request, 'music/login.html')
-    # else:
+    if not request.user.is_authenticated:
+        return render(request, 'music/login.html')
+    else:
         user = request.user
         album = get_object_or_404(Album, pk=album_id)
         return render(request, 'music/detail.html', {'album': album, 'user': user})
 def create_album(request):
 
-    # if not request.user.is_authenticated():
-    #     return render(request, 'music/login.html')
-    # else:
+    if not request.user.is_authenticated:
+        return render(request, 'music/login.html')
+    else:
         form = AlbumForm(request.POST or None, request.FILES or None)
         if form.is_valid():
             album = form.save(commit=False)
@@ -122,9 +143,9 @@ def delete_song(request, album_id, song_id):
 
 def songs(request, filter_by):
 
-    # if not request.user.is_authenticated():
-    #     return render(request, 'music/login.html')
-    # else:
+    if not request.user.is_authenticated:
+        return render(request, 'music/login.html')
+    else:
         try:
             song_ids = []
             for album in Album.objects.filter(user=request.user):

@@ -3,6 +3,7 @@ html {
   background: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRYOrW7wu5QWHyCQAK4cVi3hE79M0pZJysDVtAugZb41deIGTMEuE26QJU6igGZ-uGzlic&usqp=CAU");
   background-size: 100% !important;
 }
+
 .navbar {
   border-radius: 0;
   box-shadow: 0 0 10px rgb(66, 66, 66);
@@ -10,7 +11,11 @@ html {
 }
 
 .navbar-brand {
-  font-family: "Satisfy", cursive;
+  /* font-family: "Satisfy";
+   */
+    display: inline-flex;
+
+   font-family: 'PT Serif', serif;
 }
 
 .nav-pills > li > a {
@@ -43,7 +48,8 @@ html {
 }
 
 #user-name {
-  font-family: "Satisfy", cursive;
+  /* font-family: "Satisfy"; */
+  font-family: 'PT Serif', serif;
   text-align: center;
   font-size: 40px;
   color: #a19b9b;
@@ -73,12 +79,12 @@ html {
   padding: 20px 25px 30px;
   margin: 0 auto 25px;
   margin-top: 50px;
-  -moz-border-radius: 2px;
-  -webkit-border-radius: 2px;
-  border-radius: 2px;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
   -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
   -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
-  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
 }
 
 .page-title {
@@ -86,7 +92,7 @@ html {
   margin-bottom: 35px;
   font-size: 45px;
   font-weight: bold;
-  font-family: "Satisfy", cursive;
+  font-family: 'PT Serif', serif; 
 }
 .panel-form {
   max-width: 500px;
@@ -95,7 +101,7 @@ html {
 }
 .btn.btn-signin,
 .btn-signup {
-  background-color: rgb(104, 145, 162);
+  background-color: rgb(98, 192, 233);
   padding: 0px;
   font-weight: 700;
   font-size: 14px;
@@ -130,7 +136,7 @@ html {
 .btn.btn-signup:hover,
 .btn.btn-signup:active,
 .btn.btn-signup:focus {
-  background-color: rgb(12, 97, 33);
+  background-color: rgb(0, 132, 255);
 }
 
 .profile-img-card {

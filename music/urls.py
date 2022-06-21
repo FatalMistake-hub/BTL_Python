@@ -5,6 +5,7 @@ app_name = 'music'
 
 urlpatterns = [
     re_path(r'^$', views.index, name='index'),
+    re_path(r'^songs/all$', views.index1, name='index1'),
     re_path(r'^register/$', views.register, name='register'),
     re_path(r'^login_user/$', views.login_user, name='login_user'),
     re_path(r'^logout_user/$', views.logout_user, name='logout_user'),
